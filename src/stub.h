@@ -3,7 +3,7 @@
  * @brief  A stub header file.
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
- * @date Last Modified: Oct 17, 2024
+ * @date Last Modified: Oct 18, 2024
  */
 
 /* MIT License
@@ -94,6 +94,13 @@ namespace stub {
 
 /*--------------------------------------------------- CLASS DECLARATION BODY */
 
+/**
+ * @class Stub
+ * <A short one line description>
+ *
+ * <Longer description>
+ * <May span multiple lines or paragraphs as needed>
+ */
 class Stub {
 
 private:
@@ -121,6 +128,7 @@ int stubMember;
 void StubMethod();
 
 public:
+
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
