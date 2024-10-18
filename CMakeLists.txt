@@ -3,4 +3,4 @@ project(Visual_Lua)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Visual_Lua src/main.cpp)
+add_executable(VisualLua src/main.cpp)
