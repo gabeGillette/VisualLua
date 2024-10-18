@@ -60,15 +60,15 @@ namespace stub {
   
 */
 // struct stub_struct {
-// } stub_struct;
+// } stubStruct;
 
 /*----------------------------------------------------------------- TYPEDEFS */
 
 /**
- @typedef stub_in_alias
+ @typedef stub_int_alias
  @brief Description
 */
-// typdef int stub_int_alias
+// typdef int stubIntAlias
 
 /*-------------------------------------------NAMESPACE VARIABLE DECLARATIONS */
 
@@ -76,7 +76,7 @@ namespace stub {
  @var stub_namespace_variable;
  @brief Description
 */
-// int stub_namespace_variable;
+// int stubNamespaceVariable;
 
 /*------------------------------------------ NAMESPACE FUNCTION DECLARATIONS */
 
@@ -90,7 +90,7 @@ namespace stub {
  * @param  ...
  * @return Description of the return value
  */
-// void stub_func(); 
+// void StubFunc(); 
 
 /*--------------------------------------------------- CLASS DECLARATION BODY */
 
@@ -104,7 +104,7 @@ private:
  @var stub_member;
  @brief Description
 */
-int stub_member;
+int stubMember;
 
 /*---------------------------------------------------- PRIVATE CLASS METHODS */
 
@@ -118,7 +118,7 @@ int stub_member;
  * @param  ...
  * @return Description of the return value
  */
-void stub_method();
+void StubMethod();
 
 public:
 
