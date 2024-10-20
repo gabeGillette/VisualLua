@@ -20,7 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 
-add_executable(VisualLua src/main.cpp)
+add_executable(VisualLua src/main.cpp src/glfwinstance.h src/glfwinstance.cpp)
 
 # add dependencies
 include(cmake/CPM.cmake)
