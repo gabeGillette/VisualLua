@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD 20)
 # Specify the directory to create
 set(BUILD_DIR "${CMAKE_SOURCE_DIR}/build")
 set(DEPS_LOCATION "${CMAKE_SOURCE_DIR}/deps")
+include_directories(src/include)
 
 # Create the build directory
 file(MAKE_DIRECTORY ${BUILD_DIR})
@@ -26,4 +27,4 @@ include(cmake/CPM.cmake)
 
 CPMAddPackage("gh:glfw/glfw#3.4")
 
-target_link_libraries(VisualLua glfw)
+target_link_libraries(VisualLua glfw GL)
