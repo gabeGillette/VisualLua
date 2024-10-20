@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.25)
+
+set(DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
+
 project(Visual_Lua)
+
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -15,9 +19,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 
-# Add the local library located in the 'deps' folder
-#add_subdirectory(${DEPS_LOCATION}/glfw-3.4)
-
 add_executable(VisualLua src/main.cpp)
 
-#target_link_libraries(VisualLua ${BUILD_DIR}/lib/glfw-3.4)
+# add dependencies
+include(cmake/CPM.cmake)
+
+CPMAddPackage("gh:glfw/glfw#3.4")
+
+target_link_libraries(VisualLua glfw)
