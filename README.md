@@ -12,9 +12,7 @@ Milestone 1 - Open a window.
 Application should launch and display an OpenGL window utilizing DearImGui as 
 the widget library.
 
-Deadline: Oct 20, 2024
-
-Status: On Track
+Status: Completed Oct 21, 2024 at 3:56 AM
 
 
 Milestone 2 - Drop down menus and application layout.
@@ -24,7 +22,7 @@ must display, but may not be functional at this time.
 
 Deadline: Oct 22, 2024
 
-Status: Not Started
+Status: On track
 
 
 Milestone 3 - Interactive text input.
@@ -45,4 +43,4 @@ Deadline: Oct 28, 2024
 
 Status: Not Started
 
-Last Modified Oct 18, 2024
+Last Modified Oct 21, 2024
