@@ -1,9 +1,10 @@
 /**
- * @file glfwinstance.h
- * @brief  Header for GLFWInstance singleton class.
+ * @file window.cpp
+ * @brief  Window class implementation source file.
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
  * @date Last Modified: Oct 21, 2024
+ * @note See header for full documentation.
  */
 
 /* MIT License
@@ -28,132 +29,89 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
-#ifndef GLFWINSTANCE_H
-#define GLFWINSTANCE_H
-
-/*-------------------------------------------------------- STANDARD INCLUDES */
 
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
+#include "window.h" // Header for our Window object.
+
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
-#include "GLFW/glfw3.h" // We need access to GLFW
+#include "GLFW/glfw3.h" // We need GLFWWindow and some GLFW functions
 
-
-/**
- @namespace visuallua
- VisualLua internal namespace.
-*/
-namespace visuallua {
-
-
-
-/*--------------------------------------------------- CLASS DECLARATION BODY */
+/*---------------------------------------------------- CLASS IMPLEMENTATIONS */
 
 /**
- * @class Stub
- * <A short one line description>
- *
- * <Longer description>
- * <May span multiple lines or paragraphs as needed>
+ * @class Window
+ * Container for GLFWWindows
  */
-class GLFWInstance {
-
-private:
-
-/*---------------------------------------------------- PRIVATE CLASS METHODS */
-
-
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
-/**
- * Constructor for GFLWInstance.
- */
-GLFWInstance();
-
-public:
+visuallua::Window::Window(GLFWwindow *GLFWWindow_PTR, std::string id) :
+    _glfwWindow_PTR(GLFWWindow_PTR), _id(id)
+{
+} // constructor
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
-/**
- * Destructor for GLFWInstance.
- */
-virtual ~GLFWInstance();
+visuallua::Window::~Window() {
+  glfwDestroyWindow(_glfwWindow_PTR);
+} // destructor
 
 /*--------------------------------------------------------- COPY CONSTRUCTOR */
 
-/**
- * Copy Constructor for GLFWInstance.
- *
- * UNUSED
- */
-GLFWInstance(const GLFWInstance& other) = delete;
+visuallua::Window::Window(Window &other) {
+  _id = other._id;
+  _glfwWindow_PTR = other._glfwWindow_PTR;
+} // copy constructor
 
 /*-------------------------------------------------------------- COPY ASSIGN */
 
-/**
- * Copy Assignment operator for GLFWInstance.
- *
- * UNUSED
- */
-GLFWInstance& operator=(const GLFWInstance& other) = delete;
+visuallua::Window &visuallua::Window::operator=(const Window &other) {
+  if(this != &other) {
+    glfwDestroyWindow(_glfwWindow_PTR);
+    _glfwWindow_PTR = other._glfwWindow_PTR;
+    _id = other._id;
+  }
+  return *this;
+} // copy assignment operator
 
 /*--------------------------------------------------------- MOVE CONSTRUCTOR */
 
-/**
- * Move Constructor for GLFWInstance
- *
- * UNUSED
- */
-GLFWInstance(GLFWInstance&& GLFWInstance) noexcept = delete;
+visuallua::Window::Window(Window &&other) noexcept {
+  _glfwWindow_PTR = other._glfwWindow_PTR;
+  _id = other._id;
+  other._glfwWindow_PTR = nullptr;
+  other._id.clear();
+} // move constructor
 
 /*-------------------------------------------------------------- MOVE ASSIGN */
 
-/**
- * Move Assignment Operator for GLFWInstance
- *
- * UNUSED
- */
-GLFWInstance& operator=(GLFWInstance&& other) noexcept = delete;
+visuallua::Window &visuallua::Window::operator=(Window &&other) noexcept {
+  if(this != &other) {
+    glfwDestroyWindow(_glfwWindow_PTR);
+    _glfwWindow_PTR = other._glfwWindow_PTR;
+    _id = other._id;
+    other._glfwWindow_PTR = nullptr;
+    other._id.clear();
+  }
+  return *this;
+} // move assignment operator
 
-/*----------------------------------------------------- PUBLIC CLASS MEMBERS */
 
 /*----------------------------------------------------- PUBLIC CLASS METHODS */
 
-
 /**
- * Singleton accessor.
- *
- * Use this to access the GLFWInstance singleton class.
- *
- * @return Reference to GLFWInstance singleton.
+ * Get the raw GLFWPointer.
  */
-static GLFWInstance& Instance();
+GLFWwindow *visuallua::Window::GetRaw() {
+  return _glfwWindow_PTR;
+} // GetRaw
 
 
 /**
- * Initialize GLFW.
- *
- * You must run this method before using the singleton.
- *
- * @return int value, 1 for success, 0 for for fail.
+ * Get the Window's unique ID.
  */
-int Init();
-
-/**
- * Deinitialize GLFW.
- *
- * Clean up GLFW.
- *
- * @return void.
- */
-void Deinit();
-
-
-
-};
-
-}; 
-
-#endif
+std::string visuallua::Window::GetID() {
+  return _id;
+} // GetID

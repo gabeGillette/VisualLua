@@ -3,7 +3,7 @@
  * @brief  A stub source file.
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
- * @date Last Modified: Oct 18, 2024
+ * @date Last Modified: Oct 21, 2024
  * @note See header for full documentation.
  */
 
@@ -36,6 +36,8 @@ SOFTWARE. */
 #include "stub.h"
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
+
+/*----------------------------------------------------- FORWARD DECLARATIONS */
 
 /*-------------------------------------------------------- MACRO DEFINITIONS */
 

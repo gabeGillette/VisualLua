@@ -1,6 +1,6 @@
 /**
- * @file glfwinstance.h
- * @brief  Header for GLFWInstance singleton class.
+ * @file window.h
+ * @brief  Header for Window type, wrapper for GLFWWindow
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
  * @date Last Modified: Oct 21, 2024
@@ -28,17 +28,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
-#ifndef GLFWINSTANCE_H
-#define GLFWINSTANCE_H
+#ifndef WINDOW_H
+#define WINDOW_H
 
 /*-------------------------------------------------------- STANDARD INCLUDES */
 
-/*----------------------------------------------------------- LOCAL INCLUDES */
+#include <memory> // Shared Pointers
+#include <string> // window id
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
-#include "GLFW/glfw3.h" // We need access to GLFW
+#include "GLFW/glfw3.h" // We need GLFWWindow
 
+/*----------------------------------------------------- FORWARD DECLARATIONS */
 
 /**
  @namespace visuallua
@@ -46,114 +48,102 @@ SOFTWARE. */
 */
 namespace visuallua {
 
-
-
-/*--------------------------------------------------- CLASS DECLARATION BODY */
-
 /**
- * @class Stub
- * <A short one line description>
- *
- * <Longer description>
- * <May span multiple lines or paragraphs as needed>
+ * @class Window
+ * Container for GLFWWindows
  */
-class GLFWInstance {
+class Window {
+
+/*---------------------------------------------------- PRIVATE CLASS MEMBERS */
 
 private:
 
-/*---------------------------------------------------- PRIVATE CLASS METHODS */
+/**
+ * @var _glfwWindow_PTR
+ * Internal pointer to GLFWwindow type.
+ */
+GLFWwindow* _glfwWindow_PTR;
 
+/**
+ * @var _id
+ * Window's unique ID.
+ */
+std::string _id;
 
+public:
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
 /**
- * Constructor for GFLWInstance.
+ * Constructor for Window object.
+ *
+ * @param GLFWWindow_PTR raw pointer to GLFWwindow object.
+ * @param id Unique string ID.
  */
-GLFWInstance();
-
-public:
+Window(GLFWwindow* GLFWWindow_PTR, std::string id);
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
 /**
- * Destructor for GLFWInstance.
+ * Destructor for Window object.
  */
-virtual ~GLFWInstance();
+virtual ~Window();
 
 /*--------------------------------------------------------- COPY CONSTRUCTOR */
 
 /**
- * Copy Constructor for GLFWInstance.
- *
- * UNUSED
+ * Copy constructor for Window object.
+ * @param other Window to copy.
  */
-GLFWInstance(const GLFWInstance& other) = delete;
+Window(Window& other);
 
 /*-------------------------------------------------------------- COPY ASSIGN */
 
 /**
- * Copy Assignment operator for GLFWInstance.
- *
- * UNUSED
+ * Copy assignment operator for Window object
+ * @param other Window to copy from.
+ * @return Copy of Window.
  */
-GLFWInstance& operator=(const GLFWInstance& other) = delete;
+Window& operator=(const Window& other);
 
 /*--------------------------------------------------------- MOVE CONSTRUCTOR */
 
 /**
- * Move Constructor for GLFWInstance
- *
- * UNUSED
+ * Move Constructor for Window object.
+ * @param other Window to move from.
  */
-GLFWInstance(GLFWInstance&& GLFWInstance) noexcept = delete;
+Window(Window&& other) noexcept;
 
 /*-------------------------------------------------------------- MOVE ASSIGN */
 
 /**
- * Move Assignment Operator for GLFWInstance
- *
- * UNUSED
+ * Move assign operator for Window object.
+ * @param other Window to move from.
+ * @return Moved Window object.
  */
-GLFWInstance& operator=(GLFWInstance&& other) noexcept = delete;
-
-/*----------------------------------------------------- PUBLIC CLASS MEMBERS */
+Window& operator=(Window&& other) noexcept;
 
 /*----------------------------------------------------- PUBLIC CLASS METHODS */
 
-
 /**
- * Singleton accessor.
- *
- * Use this to access the GLFWInstance singleton class.
- *
- * @return Reference to GLFWInstance singleton.
+ * Get the raw GLFWPointer.
+ * @return GLFWwindow pointer.
  */
-static GLFWInstance& Instance();
+GLFWwindow* GetRaw();
 
 
 /**
- * Initialize GLFW.
- *
- * You must run this method before using the singleton.
- *
- * @return int value, 1 for success, 0 for for fail.
+ * Get the Window's unique ID.
+ * @return Window's ID.
  */
-int Init();
-
-/**
- * Deinitialize GLFW.
- *
- * Clean up GLFW.
- *
- * @return void.
- */
-void Deinit();
-
-
+std::string GetID();
 
 };
 
-}; 
+/*----------------------------------------------------------------- TYPEDEFS */
+
+typedef std::shared_ptr<Window> Window_PTR;
+
+}
 
 #endif

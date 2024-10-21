@@ -1,43 +1,35 @@
 #include <iostream>
 #include "GLFW/glfw3.h"
+#include "windowmanager.h"
 #include "glfwinstance.h"
 
 int main(void)
 {
-  //GLFWwindow* window;
 
-  /* Initialize the library */
-  //if (!glfwInit())
-    //return -1;
-   visuallua::GLFWInstance::Instance().Init();
+  visuallua::GLFWInstance::Instance().Init();
 
-  /* Create a windowed mode window and its OpenGL context */
-  visuallua::GLFWInstance::Instance().GetWindowPTR() = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-  if (!visuallua::GLFWInstance::Instance().GetWindowPTR())
-  {
-    glfwTerminate();
-    return -1;
-  }
+  visuallua::Window_PTR testWindow =
+      visuallua::WindowManager::Instance().CreateNewWindow(
+          640, 480, "VisualLua", "main");
 
-  /* Make the window's context current */
-  glfwMakeContextCurrent(visuallua::GLFWInstance::Instance().GetWindowPTR());
+  visuallua::WindowManager::Instance().SetCurrentContext(testWindow);
 
   /* Loop until the user closes the window */
-  while (!glfwWindowShouldClose(visuallua::GLFWInstance::Instance().GetWindowPTR()))
+  while (!glfwWindowShouldClose(testWindow->GetRaw()))
   {
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
 
     /* Swap front and back buffers */
-    glfwSwapBuffers(visuallua::GLFWInstance::Instance().GetWindowPTR());
+    glfwSwapBuffers(testWindow->GetRaw());
 
     /* Poll for and process events */
     glfwPollEvents();
   }
 
+  visuallua::WindowManager::Instance().DestroyAll();
   visuallua::GLFWInstance::Instance().Deinit();
 
-  //glfwTerminate();
   return 0;
 }
 

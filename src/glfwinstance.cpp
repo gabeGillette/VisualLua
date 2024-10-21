@@ -3,7 +3,7 @@
  * @brief  GLFWInstance singleton class implementation.
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
- * @date Last Modified: Oct 20 2024
+ * @date Last Modified: Oct 21 2024
  * @note See header for full documentation.
  */
 
@@ -30,8 +30,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
 
-/*-------------------------------------------------------- STANDARD INCLUDES */
-
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
 #include "glfwinstance.h"
@@ -49,18 +47,13 @@ SOFTWARE. */
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
-visuallua::GLFWInstance::GLFWInstance() : window_ptr(nullptr) {
-  //Init();
-} // Constructor
+visuallua::GLFWInstance::GLFWInstance() = default;
+// Constructor
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
-visuallua::GLFWInstance::~GLFWInstance() {
-  //Deinit();
-} // Destructor
-
-/*---------------------------------------------------- PRIVATE CLASS METHODS */
-
+visuallua::GLFWInstance::~GLFWInstance() = default;
+// Destructor
 
 
 /*----------------------------------------------------- PUBLIC CLASS METHODS */
@@ -73,13 +66,6 @@ visuallua::GLFWInstance &visuallua::GLFWInstance::Instance() {
   return instance;
 } // Instance
 
-/**
- * Accessor for window_ptr of GLFWInstance singleton.
- */
-GLFWwindow*& visuallua::GLFWInstance::GetWindowPTR(){
-  return window_ptr;
-} // GetWindowPTR
-
 
 /**
  * Initialize GLFW.
@@ -89,11 +75,11 @@ int visuallua::GLFWInstance::Init() {
   return 1;
 } // Init
 
+
 /**
  * Deinitialize GLFW.
  */
 void visuallua::GLFWInstance::Deinit() {
   glfwTerminate();
-  window_ptr = nullptr;
 } // Deinit
 
