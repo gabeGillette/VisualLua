@@ -3,7 +3,7 @@
  * @brief  Header file for WindowManager object
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
- * @date Last Modified: Oct 21, 2024
+ * @date Last Modified: Oct 22, 2024
  */
 
 /* MIT License
@@ -102,8 +102,15 @@ WindowManager();
 
 /*---------------------------------------------------- PRIVATE CLASS METHODS */
 
-public:
+/**
+ * Destroy all Windows.
+ *
+ * @return void
+ */
+void _DestroyAll();
 
+
+public:
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 

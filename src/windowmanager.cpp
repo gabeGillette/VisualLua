@@ -63,8 +63,7 @@ vlua::WindowManager::WindowManager() {
 /*--------------------------------------------------------------- DESTRUCTOR */
 
 vlua::WindowManager::~WindowManager() {
-  _windowList.clear();
-  _windowMap.clear();
+  _DestroyAll();
 } // Destructor
 
 /*----------------------------------------------------- PUBLIC CLASS METHODS */
@@ -191,8 +190,7 @@ void vlua::WindowManager::SetCurrentContext(std::string id) {
  * Destroy all Windows.
  */
 void vlua::WindowManager::DestroyAll() {
-  _windowList.clear();
-  _windowMap.clear();
+  _DestroyAll();
 } // DestroyAll
 
 /*---------------------------------------------------- PRIVATE CLASS METHODS */
@@ -206,5 +204,15 @@ size_t vlua::WindowManager::_findWindowIndexFromValue(
   std::vector<Window_PTR>::iterator iter;
   iter = std::find(_windowList.begin(), _windowList.end(), window);
   return std::distance(_windowList.begin(), iter);
-} // _findWindowIndexFromValue
+}
+
+
+/**
+ * Destroy all Windows.
+ */
+void vlua::WindowManager::_DestroyAll() {
+  _windowList.clear();
+  _windowMap.clear();
+}
+// _findWindowIndexFromValue
 
