@@ -1,9 +1,9 @@
 /**
- * @file stub.cpp
- * @brief  A stub source file.
+ * @file windowmanager.cpp
+ * @brief WindowManager implementation source.
  * @authors  Gabriel Gillette
  * @copyright  (c) 2024 Gabriel Gillette
- * @date Last Modified: Oct 21, 2024
+ * @date Last Modified: Oct 22, 2024
  * @note See header for full documentation.
  */
 
