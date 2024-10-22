@@ -7,16 +7,16 @@ project(Visual_Lua)
 
 set(CMAKE_CXX_STANDARD 20)
 
+# Create the build directory
+file(MAKE_DIRECTORY "./build")
+
 # Specify the directory to create
-set(BUILD_DIR "${CMAKE_SOURCE_DIR}/build")
-set(DEPS_LOCATION "${CMAKE_SOURCE_DIR}/deps")
-set(IMGUI_LOCATION "deps/imgui-1.91.4-docking")
+set(BUILD_DIR "./build")
+set(DEPS_LOCATION "${CMAKE_CURRENT_LIST_DIR}/deps")
+set(IMGUI_LOCATION "${DEPS_LOCATION}/imgui-1.91.4-docking")
 
 include_directories(src/include
         deps/imgui-1.91.4-docking)
-
-# Create the build directory
-file(MAKE_DIRECTORY ${BUILD_DIR})
 
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR}/bin)
