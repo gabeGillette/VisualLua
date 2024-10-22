@@ -7,8 +7,6 @@
  * @note See header for full documentation.
  */
 
-// TODO WindowManager does not check for unique ids.
-
 /* MIT License
 
 Copyright (c) 2024 Gabriel Gillette
@@ -41,12 +39,12 @@ SOFTWARE. */
 
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
-#include "windowmanager.h"
-#include "exceptions.h"
+#include "windowmanager.h" // This is an implementation of WindowManager.
+#include "exceptions.h"  // custom exceptions.
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
-#include "GLFW/glfw3.h"
+#include "GLFW/glfw3.h" // We need GLFW functions.
 
 /*---------------------------------------------------- CLASS IMPLEMENTATIONS */
 

@@ -32,7 +32,7 @@ SOFTWARE. */
 
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
-#include "glfwinstance.h"
+#include "glfwinstance.h" // This is an implementation.
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
