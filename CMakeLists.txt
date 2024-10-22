@@ -30,7 +30,16 @@ file(GLOB IMGUI_SOURCES
 )
 
 
-add_executable(VisualLua src/main.cpp src/glfwinstance.h src/glfwinstance.cpp src/iwindowmanager.h src/window.h src/window.cpp src/windowmanager.h src/windowmanager.cpp)
+add_executable(VisualLua
+        src/main.cpp
+        src/glfwinstance.h
+        src/glfwinstance.cpp
+        src/iwindowmanager.h 
+        src/window.h
+        src/window.cpp
+        src/windowmanager.h
+        src/windowmanager.cpp
+        )
 
 target_sources(VisualLua PRIVATE ${IMGUI_SOURCES})
 
