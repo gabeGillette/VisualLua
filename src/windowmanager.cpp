@@ -42,6 +42,7 @@ SOFTWARE. */
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
 #include "windowmanager.h"
+#include "exceptions.h"
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
@@ -84,11 +85,11 @@ vlua::Window_PTR vlua::WindowManager::CreateNewWindow(
     int width, int height, std::string title, std::string id) {
 
   if(_windowList.size() >= _MAX_WINDOW_COUNT){
-    // TODO Throw exception here.
+    throw(MaxWindowCountException(_MAX_WINDOW_COUNT));
   }
 
   if(_windowMap.contains(id)){
-    // TODO Throw exception here.
+    throw(WindowIDCollisionException());
   }
 
   GLFWwindow* rawWindow = glfwCreateWindow(
@@ -96,7 +97,7 @@ vlua::Window_PTR vlua::WindowManager::CreateNewWindow(
 
   if(rawWindow == nullptr)
   {
-    // TODO throw exception here.
+    throw(WindowCreationException());
   }
 
   auto window_ptr = std::make_shared<vlua::Window>(rawWindow, id);

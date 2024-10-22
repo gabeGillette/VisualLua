@@ -39,6 +39,8 @@ add_executable(VisualLua
         src/window.cpp
         src/windowmanager.h
         src/windowmanager.cpp
+        src/exceptions.h
+        src/exceptions.cpp
         )
 
 target_sources(VisualLua PRIVATE ${IMGUI_SOURCES})

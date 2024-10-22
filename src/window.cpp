@@ -30,9 +30,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
 
+/*-------------------------------------------------------- STANDARD INCLUDES */
+
+#include <utility> // std::move
+
 /*----------------------------------------------------------- LOCAL INCLUDES */
 
 #include "window.h" // Header for our Window object.
+#include "exceptions.h" // custom exception handling
 
 /*----------------------------------------------------- THIRD PARTY INCLUDES */
 
@@ -48,7 +53,7 @@ SOFTWARE. */
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
 vlua::Window::Window(GLFWwindow *GLFWWindow_PTR, std::string id) :
-    _glfwWindow_PTR(GLFWWindow_PTR), _id(id)
+    _glfwWindow_PTR(GLFWWindow_PTR), _id(std::move(id))
 {
 } // constructor
 
@@ -105,6 +110,11 @@ vlua::Window &vlua::Window::operator=(Window &&other) noexcept {
  * Get the raw GLFWPointer.
  */
 GLFWwindow *vlua::Window::GetRaw() {
+
+  if(_glfwWindow_PTR == nullptr){
+    throw(NULLWindowException());
+  }
+
   return _glfwWindow_PTR;
 } // GetRaw
 
