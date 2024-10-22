@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 
 set(DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
 
@@ -34,7 +34,7 @@ add_executable(VisualLua
         src/main.cpp
         src/glfwinstance.h
         src/glfwinstance.cpp
-        src/iwindowmanager.h 
+        src/iwindowmanager.h
         src/window.h
         src/window.cpp
         src/windowmanager.h
