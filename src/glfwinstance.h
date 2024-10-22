@@ -41,10 +41,10 @@ SOFTWARE. */
 
 
 /**
- @namespace visuallua
+ @namespace vlua
  VisualLua internal namespace.
 */
-namespace visuallua {
+namespace vlua {
 
 
 

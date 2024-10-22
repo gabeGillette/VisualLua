@@ -47,27 +47,27 @@ SOFTWARE. */
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
-visuallua::Window::Window(GLFWwindow *GLFWWindow_PTR, std::string id) :
+vlua::Window::Window(GLFWwindow *GLFWWindow_PTR, std::string id) :
     _glfwWindow_PTR(GLFWWindow_PTR), _id(id)
 {
 } // constructor
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
-visuallua::Window::~Window() {
+vlua::Window::~Window() {
   glfwDestroyWindow(_glfwWindow_PTR);
 } // destructor
 
 /*--------------------------------------------------------- COPY CONSTRUCTOR */
 
-visuallua::Window::Window(Window &other) {
+vlua::Window::Window(Window &other) {
   _id = other._id;
   _glfwWindow_PTR = other._glfwWindow_PTR;
 } // copy constructor
 
 /*-------------------------------------------------------------- COPY ASSIGN */
 
-visuallua::Window &visuallua::Window::operator=(const Window &other) {
+vlua::Window &vlua::Window::operator=(const Window &other) {
   if(this != &other) {
     glfwDestroyWindow(_glfwWindow_PTR);
     _glfwWindow_PTR = other._glfwWindow_PTR;
@@ -78,7 +78,7 @@ visuallua::Window &visuallua::Window::operator=(const Window &other) {
 
 /*--------------------------------------------------------- MOVE CONSTRUCTOR */
 
-visuallua::Window::Window(Window &&other) noexcept {
+vlua::Window::Window(Window &&other) noexcept {
   _glfwWindow_PTR = other._glfwWindow_PTR;
   _id = other._id;
   other._glfwWindow_PTR = nullptr;
@@ -87,7 +87,7 @@ visuallua::Window::Window(Window &&other) noexcept {
 
 /*-------------------------------------------------------------- MOVE ASSIGN */
 
-visuallua::Window &visuallua::Window::operator=(Window &&other) noexcept {
+vlua::Window &vlua::Window::operator=(Window &&other) noexcept {
   if(this != &other) {
     glfwDestroyWindow(_glfwWindow_PTR);
     _glfwWindow_PTR = other._glfwWindow_PTR;
@@ -104,7 +104,7 @@ visuallua::Window &visuallua::Window::operator=(Window &&other) noexcept {
 /**
  * Get the raw GLFWPointer.
  */
-GLFWwindow *visuallua::Window::GetRaw() {
+GLFWwindow *vlua::Window::GetRaw() {
   return _glfwWindow_PTR;
 } // GetRaw
 
@@ -112,6 +112,6 @@ GLFWwindow *visuallua::Window::GetRaw() {
 /**
  * Get the Window's unique ID.
  */
-std::string visuallua::Window::GetID() {
+std::string vlua::Window::GetID() {
   return _id;
 } // GetID

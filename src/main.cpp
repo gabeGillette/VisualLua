@@ -13,17 +13,17 @@
 int main(void)
 {
 
-  visuallua::GLFWInstance::Instance().Init();
+  vlua::GLFWInstance::Instance().Init();
 
   const char* glsl_version = "#version 130";
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-  visuallua::Window_PTR testWindow =
-      visuallua::WindowManager::Instance().CreateNewWindow(
+  vlua::Window_PTR testWindow =
+      vlua::WindowManager::Instance().CreateNewWindow(
           640, 480, "VisualLua", "main");
 
-  visuallua::WindowManager::Instance().SetCurrentContext(testWindow);
+  vlua::WindowManager::Instance().SetCurrentContext(testWindow);
 
   // Setup Dear ImGui context
   IMGUI_CHECKVERSION();
@@ -139,8 +139,8 @@ int main(void)
   ImGui_ImplGlfw_Shutdown();
   ImGui::DestroyContext();
 
-  visuallua::WindowManager::Instance().DestroyAll();
-  visuallua::GLFWInstance::Instance().Deinit();
+  vlua::WindowManager::Instance().DestroyAll();
+  vlua::GLFWInstance::Instance().Deinit();
 
   return 0;
 }

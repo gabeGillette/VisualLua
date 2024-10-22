@@ -56,13 +56,13 @@ SOFTWARE. */
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
-visuallua::WindowManager::WindowManager() {
+vlua::WindowManager::WindowManager() {
   _windowList.reserve(_MAX_WINDOW_COUNT);
 } // Constructor
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
-visuallua::WindowManager::~WindowManager() {
+vlua::WindowManager::~WindowManager() {
   _windowList.clear();
   _windowMap.clear();
 } // Destructor
@@ -72,7 +72,7 @@ visuallua::WindowManager::~WindowManager() {
 /**
  * Singleton accessor.
  */
-visuallua::IWindowManager &visuallua::WindowManager::Instance() {
+vlua::IWindowManager &vlua::WindowManager::Instance() {
   static WindowManager instance;
   return instance;
 } // Instance
@@ -81,7 +81,7 @@ visuallua::IWindowManager &visuallua::WindowManager::Instance() {
 /**
  * Creates a new Window.
  */
-visuallua::Window_PTR visuallua::WindowManager::CreateNewWindow(
+vlua::Window_PTR vlua::WindowManager::CreateNewWindow(
     int width, int height, std::string title, std::string id) {
 
   if(_windowList.size() >= _MAX_WINDOW_COUNT){
@@ -100,7 +100,7 @@ visuallua::Window_PTR visuallua::WindowManager::CreateNewWindow(
     // TODO throw exception here.
   }
 
-  auto window_ptr = std::make_shared<visuallua::Window>(rawWindow, id);
+  auto window_ptr = std::make_shared<vlua::Window>(rawWindow, id);
   _windowList.push_back(window_ptr);
   _windowMap[id] = window_ptr;
 
@@ -111,7 +111,7 @@ visuallua::Window_PTR visuallua::WindowManager::CreateNewWindow(
 /**
  * Returns the number of WindowPTR object instances in memory.
  */
-size_t visuallua::WindowManager::NumberOfWindows() {
+size_t vlua::WindowManager::NumberOfWindows() {
   return _windowList.size();
 } // NumberOfWindows
 
@@ -119,7 +119,7 @@ size_t visuallua::WindowManager::NumberOfWindows() {
 /**
  * Get a WindowPTR object by array index.
  */
-visuallua::Window_PTR visuallua::WindowManager::GetWindow(size_t index) {
+vlua::Window_PTR vlua::WindowManager::GetWindow(size_t index) {
   return _windowList.at(index);
 } // GetWindow
 
@@ -127,7 +127,7 @@ visuallua::Window_PTR visuallua::WindowManager::GetWindow(size_t index) {
 /**
  * Get a WindowPTR object by unique string ID.
  */
-visuallua::Window_PTR visuallua::WindowManager::GetWindow(std::string id) {
+vlua::Window_PTR vlua::WindowManager::GetWindow(std::string id) {
   return _windowMap.at(id);
 } // GetWindow
 
@@ -135,7 +135,7 @@ visuallua::Window_PTR visuallua::WindowManager::GetWindow(std::string id) {
 /**
  * Destroy a WindowPTR object by WindowPTR object.
  */
-int visuallua::WindowManager::DestroyWindow(visuallua::Window_PTR window) {
+int vlua::WindowManager::DestroyWindow(vlua::Window_PTR window) {
   _windowMap.erase(window->GetID());
   size_t index = _findWindowIndexFromValue(window);
   _windowList.erase(_windowList.begin() + index);
@@ -147,7 +147,7 @@ int visuallua::WindowManager::DestroyWindow(visuallua::Window_PTR window) {
 /**
  * Destroy a WindowPTR object by array index.
  */
-int visuallua::WindowManager::DestroyWindow(size_t index) {
+int vlua::WindowManager::DestroyWindow(size_t index) {
   return DestroyWindow(GetWindow(index));
 } // DestroyWindow
 
@@ -155,7 +155,7 @@ int visuallua::WindowManager::DestroyWindow(size_t index) {
 /**
  * Destroy a WindowPTR object by unique string ID.
  */
-int visuallua::WindowManager::DestroyWindow(std::string id) {
+int vlua::WindowManager::DestroyWindow(std::string id) {
   Window_PTR window = _windowMap.at(id);
   return DestroyWindow(window);
 } // DestroyWindow
@@ -164,8 +164,8 @@ int visuallua::WindowManager::DestroyWindow(std::string id) {
 /**
  * Sets WindowPTR object as current drawing context by WindowPTR object.
  */
-void visuallua::WindowManager::SetCurrentContext(
-    visuallua::Window_PTR window) {
+void vlua::WindowManager::SetCurrentContext(
+    vlua::Window_PTR window) {
 
   glfwMakeContextCurrent(window->GetRaw());
 } // SetCurrentContext
@@ -174,7 +174,7 @@ void visuallua::WindowManager::SetCurrentContext(
 /**
  * Sets WindowPTR object as current drawing context by array index.
  */
-void visuallua::WindowManager::SetCurrentContext(size_t index) {
+void vlua::WindowManager::SetCurrentContext(size_t index) {
   glfwMakeContextCurrent(_windowList.at(index)->GetRaw());
 } // SetCurrentContext
 
@@ -182,7 +182,7 @@ void visuallua::WindowManager::SetCurrentContext(size_t index) {
 /**
  * Sets WindowPTR object as current drawing context by unique string id.
  */
-void visuallua::WindowManager::SetCurrentContext(std::string id) {
+void vlua::WindowManager::SetCurrentContext(std::string id) {
   glfwMakeContextCurrent(_windowMap.at(id)->GetRaw());
 } // SetCurrentContext
 
@@ -190,7 +190,7 @@ void visuallua::WindowManager::SetCurrentContext(std::string id) {
 /**
  * Destroy all Windows.
  */
-void visuallua::WindowManager::DestroyAll() {
+void vlua::WindowManager::DestroyAll() {
   _windowList.clear();
   _windowMap.clear();
 } // DestroyAll
@@ -200,8 +200,8 @@ void visuallua::WindowManager::DestroyAll() {
 /**
  * Find the index of the current Window object by value.
  */
-size_t visuallua::WindowManager::_findWindowIndexFromValue(
-    const visuallua::Window_PTR& window) {
+size_t vlua::WindowManager::_findWindowIndexFromValue(
+    const vlua::Window_PTR& window) {
 
   std::vector<Window_PTR>::iterator iter;
   iter = std::find(_windowList.begin(), _windowList.end(), window);

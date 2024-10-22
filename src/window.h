@@ -43,10 +43,10 @@ SOFTWARE. */
 /*----------------------------------------------------- FORWARD DECLARATIONS */
 
 /**
- @namespace visuallua
+ @namespace vlua
  VisualLua internal namespace.
 */
-namespace visuallua {
+namespace vlua {
 
 /**
  * @class Window

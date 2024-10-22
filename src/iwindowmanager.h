@@ -40,10 +40,10 @@ SOFTWARE. */
 #include "window.h" // for window object
 
 /**
- @namespace visuallua
+ @namespace vlua
  VisualLua internal namespace.
 */
-namespace visuallua {
+namespace vlua {
 
 /*--------------------------------------------------- CLASS DECLARATION BODY */
 

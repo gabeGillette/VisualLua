@@ -48,10 +48,10 @@ SOFTWARE. */
 #include "GLFW/glfw3.h"
 
 /**
- @namespace visuallua
+ @namespace vlua
  VisualLua internal namespace.
 */
-namespace visuallua {
+namespace vlua {
 
 /*--------------------------------------------------- CLASS DECLARATION BODY */
 

@@ -47,12 +47,12 @@ SOFTWARE. */
 
 /*-------------------------------------------------------------- CONSTRUCTOR */
 
-visuallua::GLFWInstance::GLFWInstance() = default;
+vlua::GLFWInstance::GLFWInstance() = default;
 // Constructor
 
 /*--------------------------------------------------------------- DESTRUCTOR */
 
-visuallua::GLFWInstance::~GLFWInstance() = default;
+vlua::GLFWInstance::~GLFWInstance() = default;
 // Destructor
 
 
@@ -61,7 +61,7 @@ visuallua::GLFWInstance::~GLFWInstance() = default;
 /**
  * Singleton accessor.
  */
-visuallua::GLFWInstance &visuallua::GLFWInstance::Instance() {
+vlua::GLFWInstance &vlua::GLFWInstance::Instance() {
   static GLFWInstance instance;
   return instance;
 } // Instance
@@ -70,7 +70,7 @@ visuallua::GLFWInstance &visuallua::GLFWInstance::Instance() {
 /**
  * Initialize GLFW.
  */
-int visuallua::GLFWInstance::Init() {
+int vlua::GLFWInstance::Init() {
   if (!glfwInit()) return 0;
   return 1;
 } // Init
@@ -79,7 +79,7 @@ int visuallua::GLFWInstance::Init() {
 /**
  * Deinitialize GLFW.
  */
-void visuallua::GLFWInstance::Deinit() {
+void vlua::GLFWInstance::Deinit() {
   glfwTerminate();
 } // Deinit
 
